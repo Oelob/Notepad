@@ -6,12 +6,13 @@ class Notepad():
     id = 0
     title = ""
     msg = ""
-    data = none
+    date = datetime.datetime.now().strftime("%Y-%m-%d %H.%M.%S")
+  
     
-    def __init__(self, id, title, msg, data):
+    def __init__(self, id, title, msg, date = date):
         self.id = id
         self.title = title
         self.msg = msg
-        self.data = datetime.now()
+        self.date = date
     
-    
+   
