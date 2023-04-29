@@ -4,7 +4,7 @@ from View import *
 import json
 
 def Menu():
-    a = int(input("Введите действие: "))
+    a = int(input("Введите действие:\n 1. Добавление новой заметки \n 2. Удаление заметки \n 0. Выход\n "))
     if (a == 1):
         list = CreateNotepad.GetInfo()
         obj = Notepad(list[0],list[1],list[2])
@@ -12,36 +12,38 @@ def Menu():
         try: 
            with open ('data.json', 'r') as json_file:
                 data = json.load(json_file)
-                print(data)
                 data.append(obj.GetDict())
-                print(data)
                 with open('data.json', 'w') as f:
                     json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=False)
                     f.truncate()
+                print("Заметка добавлена")
         except:
             with open('data.json', 'w') as json_file:
                 json.dump([obj.GetDict()], json_file, indent=2, ensure_ascii=False)
-           
+                print("Заметка добавлена")
 
 
     if (a == 2):
+        num_note = DelNotepad.GetInfo()
         try: 
             with open ('data.json', 'r') as json_file:
                 data = json.load(json_file)
-                print(data)
-                data.append(obj.GetDict())
-                print(data)
-            with open('data.json', 'w') as f:
-                json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=False)
-                f.truncate()
+                for i in data:
+                    if i['id'] == num_note:
+                        data.remove(i)
+                # print(data)
+                with open('data.json', 'w') as f:
+                    json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=False)
+                    f.truncate()
+                    print("Заметка удалена")
+                
         except:
                 print('File does not exsist')
                 print('Try again')
                 Menu()
-        # num_note = DelNotepad.GetInfo()
-        # for item in obj.items():
-        #     if  == num_note:
-        #         obj[num_note]
+    
+    if (a == 0):
+        return print("The end")
 
 Menu()        
 
