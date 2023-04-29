@@ -3,7 +3,7 @@ class CreateNotepad():
     def GetInfo():
         
         result = []
-        id = input("Введите ID ")
+        id = int(input("Введите ID "))
         title = input("Введите заголовок заметки ")
         msg = input("Введите текст заметки ")
         result.append(id)
@@ -15,7 +15,7 @@ class DelNotepad():
 
     def GetInfo():
         result = 0
-        result = input("id заметки для удаления ")
+        result = int(input("id заметки для удаления "))
         return result
 
 #class CreateNotepadIter():  

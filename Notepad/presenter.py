@@ -12,16 +12,15 @@ def Menu():
         try: 
            with open ('data.json', 'r') as json_file:
                 data = json.load(json_file)
-                print(data)
                 data.append(obj.GetDict())
-                print(data)
                 with open('data.json', 'w') as f:
                     json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=False)
                     f.truncate()
+                print("Заметка добавлена")
         except:
             with open('data.json', 'w') as json_file:
                 json.dump([obj.GetDict()], json_file, indent=2, ensure_ascii=False)
-           
+                print("Заметка добавлена")
 
 
     if (a == 2):
@@ -32,17 +31,16 @@ def Menu():
                 for i in data:
                     if i['id'] == num_note:
                         data.remove(i)
+                # print(data)
+                with open('data.json', 'w') as f:
+                    json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=False)
+                    f.truncate()
+                    print("Заметка удалена")
                 
-            with open('data.json', 'w') as f:
-                json.dump(data, f, indent=4, sort_keys=True, ensure_ascii=False)
-                f.truncate()
         except:
                 print('File does not exsist')
                 print('Try again')
                 Menu()
-        # for item in obj.items():
-        #     if  == num_note:
-        #         obj[num_note]
     
     if (a == 0):
         return print("The end")
