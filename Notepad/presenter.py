@@ -20,12 +20,14 @@ def Menu():
                 with open('data.json', 'w') as f:
                     json.dump(data, f, indent=4, ensure_ascii=False)
                     f.truncate()
-                print("Заметка добавлена")
+                message = ShowToUser('Заметка создана\n')
+                message.PrintInfo()
                 Menu()
         except:
             with open('data.json', 'w') as json_file:
                 json.dump([obj.GetDict()], json_file, indent=2, ensure_ascii=False)
-                print("Заметка добавлена")
+                message = ShowToUser('Заметка создана\n')
+                message.PrintInfo()
                 Menu()
 
 
@@ -40,31 +42,33 @@ def Menu():
                 with open('data.json', 'w') as f:
                     json.dump(data, f, indent=4, ensure_ascii=False)
                     f.truncate()
-                    print("Заметка удалена")
+                    message = ShowToUser('Заметка удалена\n')
+                    message.PrintInfo()
                     Menu()
                 
         except:
-                print('File does not exsist')
-                print('Try again')
+                ShowToUser.PrintError()
                 Menu()
     
     if (a == 3):
         try: 
             with open ('data.json', 'r') as json_file:
                 data = json.load(json_file)
-                print(type(data))
                 new_data = sorted(data, key= itemgetter("date"))
                 for i in new_data:
-                    print(i)
+                    obj = ShowToUser(i)
+                    obj.PrintInfo()
+                    print()
+                    # print(i)
                 Menu()
                 
         except:
-                print('File does not exsist')
-                print('Try again')
-                Menu()
+               ShowToUser.PrintError()
+               Menu()
         
 
     if (a == 0):
-        return print("The end")
-
+        obj = ShowToUser("The end")
+        obj.PrintInfo()
+         
 Menu()        

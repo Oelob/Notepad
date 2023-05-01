@@ -28,4 +28,6 @@ class Notepad():
             'msg':self.msg,
             'date':self.date
         }
+    
+
    
