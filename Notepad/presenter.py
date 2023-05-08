@@ -4,6 +4,7 @@ from models import *
 from View import *
 import json
 
+
 def Menu():
     while True:
         a = int(input("Введите действие:\
@@ -25,13 +26,13 @@ def Menu():
                             f.truncate()
                         message = ShowToUser('Заметка создана\n')
                         message.PrintInfo()
-                        Menu()
+                Menu()
             except:
                 with open('data.json', 'w') as json_file:
                     json.dump([obj.GetDict()], json_file, indent=2, ensure_ascii=False)
                     message = ShowToUser('Заметка создана\n')
                     message.PrintInfo()
-                    Menu()
+                Menu()
         
         # блок удаления заметки
         if (a == 2):
@@ -98,13 +99,9 @@ def Menu():
                     ShowToUser.PrintError()
                     Menu()
 
-
         # блок выхода из меню и прекращения работы программы
         if (a == 0):
             obj = ShowToUser("The end")
             obj.PrintInfo()
             break
-        
-         
-         
-Menu()      
+    
