@@ -1,7 +1,6 @@
-package Game;
-
-import Game.models.LoteryBox;
-import Game.models.Toys;
+import models.Gamer;
+import models.LoteryBox;
+import models.Toys;
 
 public class program{
     public static void main(String[] args) {
@@ -10,7 +9,8 @@ public class program{
         Toys toy2 = new Toys(2, "lion", 4, 60, "fluffy");
         Toys toy3 = new Toys(3, "cat", 3, 50, "plastic");
         Toys toy4 = new Toys(4, "bycicle", 1, 20, "transport");
-        
+        Gamer gamer1 = new Gamer(1, "Ivan");
+        Gamer gamer2 = new Gamer(2, "David");
 
        
 

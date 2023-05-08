@@ -1,5 +1,4 @@
-package Game.models;
-
+package models;
 public class Toys{
 
     protected int id;

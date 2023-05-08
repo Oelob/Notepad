@@ -1,5 +1,4 @@
-
-package Game.models;
+package models;
 
 import java.util.ArrayList;
 import java.util.Iterator;
